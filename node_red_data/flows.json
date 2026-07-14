@@ -1,0 +1,509 @@
+[
+    {
+        "id": "2f7ae58844a9095b",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7bfbaac5a28e9b99",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "cc6b2c055d12809d",
+        "type": "ui_tab",
+        "name": "Cripto Monedas",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "8aaae6fb11a9fbfb",
+        "type": "ui_group",
+        "name": "Bitcoin (BTC)",
+        "tab": "cc6b2c055d12809d",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "59149bbf93dc0cde",
+        "type": "ui_group",
+        "name": "Ethereum (ETH)",
+        "tab": "cc6b2c055d12809d",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e8528a58e5862d1d",
+        "type": "debug",
+        "z": "2f7ae58844a9095b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "aa32be2a75451f54",
+        "type": "inject",
+        "z": "2f7ae58844a9095b",
+        "name": "inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 280,
+        "wires": [
+            [
+                "172f5b17b459284d"
+            ]
+        ]
+    },
+    {
+        "id": "172f5b17b459284d",
+        "type": "http request",
+        "z": "2f7ae58844a9095b",
+        "name": "http request",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.binance.com/api/v3/ticker/price?symbols=[\"BTCUSDT\",\"ETHUSDT\"]",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 280,
+        "wires": [
+            [
+                "d10664652ac9ac7c"
+            ]
+        ]
+    },
+    {
+        "id": "d10664652ac9ac7c",
+        "type": "split",
+        "z": "2f7ae58844a9095b",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 470,
+        "y": 280,
+        "wires": [
+            [
+                "6f6226db557d6b46"
+            ]
+        ]
+    },
+    {
+        "id": "6f6226db557d6b46",
+        "type": "switch",
+        "z": "2f7ae58844a9095b",
+        "name": "",
+        "property": "payload.symbol",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "BTCUSDT",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ETHUSDT",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 610,
+        "y": 280,
+        "wires": [
+            [
+                "6fa54911c132a724"
+            ],
+            [
+                "183faeac3f757eb4"
+            ]
+        ]
+    },
+    {
+        "id": "3e82f4edf9c1a628",
+        "type": "ui_text",
+        "z": "2f7ae58844a9095b",
+        "group": "8aaae6fb11a9fbfb",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Valor Actual [U$D]:",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1050,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "6fa54911c132a724",
+        "type": "function",
+        "z": "2f7ae58844a9095b",
+        "name": "function BTC",
+        "func": "// Redondea y mueve el payload.price a payload\nlet price = Math.round(msg.payload.price);\nmsg.payload = price;\n\n// Para incializar los limites de Gauge y Chart\n// Se ejcuta una sola vez al comienzo con un deploy\n// Tomo un 1% mas para maximo y 1% menos para el minimo\nlet initialized = flow.get('btc_initialized') || false;\n\nif (!initialized) {\n    let min = Math.round(price * 0.99);\n    let max = Math.round(price * 1.01);\n\n    // ui_control actualiza tanto el chart (ymin/ymax) como el gauge (min/max)\n    msg.ui_control = { min: min, max: max, ymin: min, ymax: max };\n\n    flow.set('btc_initialized', true);\n\n    // Mustra en LOG\n    node.warn(\"BTC límites seteados: min=\" + min + \" max=\" + max);\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "\nflow.set('btc_initialized', false);",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 120,
+        "wires": [
+            [
+                "3e82f4edf9c1a628",
+                "1f23519e8aa4396c",
+                "d9824942043b737d",
+                "e8528a58e5862d1d"
+            ]
+        ]
+    },
+    {
+        "id": "1f23519e8aa4396c",
+        "type": "ui_chart",
+        "z": "2f7ae58844a9095b",
+        "name": "",
+        "group": "8aaae6fb11a9fbfb",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "63900",
+        "ymax": "64200",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1010,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d9824942043b737d",
+        "type": "ui_gauge",
+        "z": "2f7ae58844a9095b",
+        "name": "",
+        "group": "8aaae6fb11a9fbfb",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "",
+        "label": "",
+        "format": "{{value}}",
+        "min": "63900",
+        "max": "64200",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1010,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "dc84e3a940759988",
+        "type": "debug",
+        "z": "2f7ae58844a9095b",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "51059b2c6a2de38a",
+        "type": "ui_text",
+        "z": "2f7ae58844a9095b",
+        "group": "59149bbf93dc0cde",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Valor Actual [U$D]:",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1050,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "183faeac3f757eb4",
+        "type": "function",
+        "z": "2f7ae58844a9095b",
+        "name": "function ETH",
+        "func": "// Redondea y mueve el payload.price a payload\nlet price = Math.round(msg.payload.price);\nmsg.payload = price;\n\n// Para incializar los limites de Gauge y Chart\n// Se ejcuta una sola vez al comienzo\n// Tomo un 1% mas para maximo y 1% menos para el minimo\nlet initialized = flow.get('eth_initialized') || false;\n\nif (!initialized) {\n    let min = Math.round(price * 0.99);\n    let max = Math.round(price * 1.01);\n\n    // ui_control actualiza tanto el chart (ymin/ymax) como el gauge (min/max)\n    msg.ui_control = { min: min, max: max, ymin: min, ymax: max };\n\n    flow.set('eth_initialized', true);\n\n    // Mustra en LOG\n    node.warn(\"ETH límites seteados: min=\" + min + \" max=\" + max);\n}\n\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nflow.set('eth_initialized', false);",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 420,
+        "wires": [
+            [
+                "51059b2c6a2de38a",
+                "f7b0175e206b2c54",
+                "e3e42c7f2b01eb92",
+                "dc84e3a940759988"
+            ]
+        ]
+    },
+    {
+        "id": "f7b0175e206b2c54",
+        "type": "ui_chart",
+        "z": "2f7ae58844a9095b",
+        "name": "",
+        "group": "59149bbf93dc0cde",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "63900",
+        "ymax": "64200",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1010,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e3e42c7f2b01eb92",
+        "type": "ui_gauge",
+        "z": "2f7ae58844a9095b",
+        "name": "",
+        "group": "59149bbf93dc0cde",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "",
+        "label": "",
+        "format": "{{value}}",
+        "min": "63900",
+        "max": "64200",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1010,
+        "y": 440,
+        "wires": []
+    }
+]
